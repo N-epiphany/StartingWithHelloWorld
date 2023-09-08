@@ -1,49 +1,51 @@
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        //   //we are creating an vector to store values
-        //     vector<int> result;
-        //     //iterations
-        //       for(int i=0;i<nums.size();i++){
-               
-        //           int get = target - nums[i];    // the value we need to find
-        //           // cout<<"\n \n THIS IS ITERATION"<<i<<endl;
+      
+            vector<int> sorted(nums);
+            sort(sorted.begin(),sorted.end());
+            int flag=0;
 
-        //           // cout<<"target : "<<target<<" : ";
-        //           // cout<<"get : "<<get<<endl;
+            int left=0;
+            int right=sorted.size()-1;
 
-        //           for(int j=i+1;j<nums.size();j++){
+            while(left<=right){
+                int sum = sorted[left]+sorted[right];
+                if(sum==target){
+                    //  int index1 = find(nums.begin(), nums.end(), sorted[left]) - nums.begin();
+                    // int index2 = find(nums.begin(), nums.end(), sorted[right]) - nums.begin();
+                    cout<<left<<right;
+                    flag=1;
+                    break;
 
-        //               // cout<<"Inside sec loop get:"<<get;
-        //               // cout<<" nums[j]:"<<j <<"value"<<nums[j]<<endl;
-        //               if(nums[j]==get){
-        //                 // cout<<"we are pushing back"<<i<<":"<<j<<endl;
-        //                 result.push_back(i);
-        //                 result.push_back(j);
-        //               }
-        //           }                
-        //     }
-            //above is brute force
-
-            //trying to solve with a single loop
-            vector<int> result;
-
-            //sort(nums.begin(),nums.end());
-            int n=nums.size();
-
-            for(int i=0;i<n;i++){
-                int pair = target -nums[i];
-                auto it = find(nums.begin()+i+1,nums.end(),pair);
-                cout<<target<<"="<<nums[i]<<"+"<<pair<<endl;
-                cout<<it-nums.begin()<<endl;
-                if(it!=nums.end()){
-                    cout<<"we are pushing"<<endl;
-                    cout<<i<<":"<<it-nums.begin();
-                    result.push_back(it-nums.begin());
-                    result.push_back(i);
-                    return result;
-              }
+                    // if (index1 != index2) {
+                    //    return{index1,index2};
+                    //  }
+                }
+                else if(sum<target){
+                    left++;
+                }
+                else{
+                    right--;
+                }
             }
-            return result;
+            if(flag==1){
+                int index1 = find(nums.begin(), nums.end(), sorted[left]) - nums.begin();
+
+                int index2 = find(nums.begin(), nums.end(), sorted[right]) - nums.begin();
+
+                cout<<index1<<":"<<index2;
+                if (index1 != index2) {
+                       return{index1,index2};
+                     }
+                     else{
+                         int index2 = find(nums.begin()+index1+1, nums.end(), sorted[right]) - nums.begin();
+                          return{index1,index2};
+
+                     }
+            }
+            
+             
+              return {};
     }
 };
