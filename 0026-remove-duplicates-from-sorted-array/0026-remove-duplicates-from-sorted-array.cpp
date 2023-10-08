@@ -5,7 +5,7 @@ public:
         int first , second;
          
         for(int first=0 , second =1;second<nums.size();first++,second++){
-            cout<<first<<":"<<second<<endl;
+            //cout<<first<<":"<<second<<endl;
             if(nums[first]!=nums[second]) continue;
             else{
              nums[first]=-102;   
