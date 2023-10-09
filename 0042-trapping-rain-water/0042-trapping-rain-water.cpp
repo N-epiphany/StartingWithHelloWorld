@@ -1,21 +1,14 @@
 class Solution {
 public:
     int trap(vector<int>& height) {
-        //iterate through the vector use two pointers and subtract them 
-        //if neg ignore
-        // if positive add
-        // int capacity=0;
-
-        // for(int i=1;i<height.size();i++){
-        //     int value=height[i-1]-height[i];
-        //     if (value<0) continue;
-        //     else if (value>0) capacity+=value;
-
-        // }
-        // return capacity;
+        //iterate through the vector use two pointers run from both end
+        //check which side is higher from there we can check water trapped
+        //set max value of left and right bars 
+            //subtract to see how much water is trapped
         
+       
     int n = height.size();
-    if (n <= 2) return 0; // No water can be trapped with less than 3 bars
+    // if (n <= 2) return 0; // No water can be trapped with less than 3 bars
 
     int left = 0, right = n - 1; // Two pointers
     int left_max = 0, right_max = 0; // Initialize maximum heights for both sides
